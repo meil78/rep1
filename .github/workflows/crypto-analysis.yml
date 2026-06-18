@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -24,8 +24,9 @@ jobs:
       
       - name: Run Crypto Analysis
         run: |
-          python main.py analyze bitcoin --days 30 > analysis_results.txt 2>&1
-          python main.py top --limit 15 >> analysis_results.txt 2>&1
+          python main.py analyze bitcoin --days 30 > analysis_results.txt 2>&1 || true
+          python main.py top --limit 15 >> analysis_results.txt 2>&1 || true
+          cat analysis_results.txt
       
       - name: Upload Results
         uses: actions/upload-artifact@v4
