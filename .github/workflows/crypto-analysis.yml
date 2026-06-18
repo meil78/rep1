@@ -1,0 +1,36 @@
+name: Crypto Trading Agent Analysis
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  analyze-crypto:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run Crypto Analysis
+        run: |
+          python main.py analyze bitcoin --days 30 > analysis_results.txt 2>&1
+          python main.py top --limit 15 >> analysis_results.txt 2>&1
+      
+      - name: Upload Results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: crypto-analysis-results
+          path: analysis_results.txt
+          retention-days: 30
