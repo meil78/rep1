@@ -28,7 +28,7 @@ jobs:
           python main.py top --limit 15 >> analysis_results.txt 2>&1
       
       - name: Upload Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: crypto-analysis-results
