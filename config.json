@@ -1,0 +1,40 @@
+{
+  "technical_indicators": {
+    "rsi_period": 14,
+    "rsi_oversold": 30,
+    "rsi_overbought": 70,
+    "macd_fast": 12,
+    "macd_slow": 26,
+    "macd_signal": 9,
+    "ma_short": 20,
+    "ma_long": 50,
+    "bollinger_period": 20,
+    "bollinger_std": 2
+  },
+  "signal_generation": {
+    "strong_buy_threshold": 0.75,
+    "buy_threshold": 0.55,
+    "sell_threshold": 0.35,
+    "strong_sell_threshold": 0.15,
+    "confidence_weight_rsi": 0.25,
+    "confidence_weight_macd": 0.35,
+    "confidence_weight_ma": 0.25,
+    "confidence_weight_volatility": 0.15
+  },
+  "risk_management": {
+    "max_position_size": 0.05,
+    "stop_loss_percent": 0.05,
+    "take_profit_percent": 0.1,
+    "volatility_threshold": 0.05
+  },
+  "timeframes": {
+    "short": "1h",
+    "medium": "4h",
+    "long": "24h"
+  },
+  "api": {
+    "coingecko_base_url": "https://api.coingecko.com/api/v3",
+    "request_timeout": 10,
+    "rate_limit_delay": 0.5
+  }
+}
